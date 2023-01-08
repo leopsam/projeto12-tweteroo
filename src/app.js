@@ -20,7 +20,7 @@ app.post('/sign-up', (req, res) => {
 app.post('/tweets', (req, res) => {
 	let newTweet = req.body
 	if(!newTweet.username){
-		return res.status(200).send("Unauthorized")
+		return res.status(401).send("UNAUTHORIZED");
 	}
 
 	tweets.push(newTweet)
