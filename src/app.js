@@ -19,7 +19,7 @@ app.post('/tweets', (req, res) => {
 	const newTweet = req.body
 
 	if(!users[0].username){
-		return res.send("UNAUTHORIZED")
+		return res.status(401).send("UNAUTHORIZED")
 	}
 	
 	tweets.push(newTweet)
@@ -36,8 +36,7 @@ app.get("/tweets", (req, res) => {
 
     const newTweets = tweetsReverse.reverse().slice(0, 10)
 
-    res.sendStatus(200)
-	res.send(newTweets)
+    res.status(200).send(newTweets)
 	
 })
 
