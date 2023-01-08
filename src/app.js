@@ -36,7 +36,8 @@ app.get("/tweets", (req, res) => {
 
     const newTweets = tweetsReverse.reverse().slice(0, 10)
 
-    res.send(newTweets)
+    res.sendStatus(200)
+	res.send(newTweets)
 	
 })
 
