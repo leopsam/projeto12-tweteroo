@@ -8,29 +8,23 @@ const app = express()
 app.use(cors())
 app.use(express.json());
 
-//--------------------------------------------------------
-
 app.post('/sign-up', (req, res) => {
-	const user = req.body
-	
-	users.push(user)
-  	res.send("OK")
-})
 
-//--------------------------------------------------------
+	const user = req.body	
+	users.push(user)
+	res.sendStatus(200)
+})
 
 app.post('/tweets', (req, res) => {
 	const newTweet = req.body
 
-	/*if(!users.username){
+	if(!users[0].username){
 		return res.sendStatus(401)
-	}*/
+	}
 	
 	tweets.push(newTweet)
-  	res.send(newTweet)
+	res.sendStatus(200)
 })
-
-//--------------------------------------------------------
 
 app.get("/tweets", (req, res) => {
 	
@@ -45,8 +39,6 @@ app.get("/tweets", (req, res) => {
     res.send(newTweets)
 	
 })
-
-//--------------------------------------------------------
 
 app.listen(5000, () => {
 	console.log("Servidor rodou de boas!")
