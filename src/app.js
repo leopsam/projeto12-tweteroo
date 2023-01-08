@@ -12,13 +12,14 @@ app.post('/sign-up', (req, res) => {
 
 	const user = req.body	
 	users.push(user)
+	console.log(user)
 	res.sendStatus(200)
 })
 
 app.post('/tweets', (req, res) => {
 	const newTweet = req.body
 
-	if(!users[0].username){
+	if(!newTweet.username){
 		return res.status(401).send("UNAUTHORIZED")
 	}
 	
