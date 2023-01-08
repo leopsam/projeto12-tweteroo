@@ -1,6 +1,11 @@
 import express from 'express';
 import cors from 'cors'; 
 
+const user1 = {
+	username: 'leonardo2015', 
+	avatar: "https://i1.sndcdn.com/avatars-1zHN7xdLem5rBIJu-NmQ79g-t500x500.jpg" 
+}
+
 const app = express();
 app.use(cors()); 
 
