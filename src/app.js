@@ -1,23 +1,18 @@
 import express from 'express'
 import cors from 'cors' 
 
-const users = [
-	{
-		username: 'bobesponja', 
-		avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info" 
-	}
-]
-
+const users = []
 const tweets = []
-
-//--------------------------------------------------------
 
 const app = express()
 app.use(cors())
 app.use(express.json());
 
+//--------------------------------------------------------
+
 app.post('/sign-up', (req, res) => {
 	const user = req.body
+	
 	users.push(user)
   	res.send("OK")
 })
@@ -39,6 +34,15 @@ app.post('/tweets', (req, res) => {
 
 app.get("/tweets", (req, res) => {
 	
+	const photo = users[0].avatar
+
+	const tweetPhoto = tweets.map(tweet => tweet = {...tweet, avatar: photo})
+
+	const tweetsReverse = [...tweetPhoto]
+
+    const newTweets = tweetsReverse.reverse().slice(0, 10)
+
+    res.send(newTweets)
 	
 })
 
