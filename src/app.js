@@ -3,6 +3,7 @@ import cors from 'cors'
 
 const users = []
 const tweets = []
+let userAtual = {}
 
 const app = express()
 app.use(cors())
@@ -12,24 +13,26 @@ app.post('/sign-up', (req, res) => {
 
 	const user = req.body	
 	users.push(user)
-	console.log(user)
+	userAtual = user
 	res.sendStatus(200)
 })
 
 app.post('/tweets', (req, res) => {
-	const newTweet = req.body
+	let newTweet = req.body
 
 	if(!newTweet.username){
 		return res.status(200).send("UNAUTHORIZED")
 	}
-	
+
+	//console.log(newTweet)
 	tweets.push(newTweet)
+
 	res.sendStatus(200)
 })
 
 app.get("/tweets", (req, res) => {
 	
-	const photo = users[0].avatar
+	const photo = userAtual.avatar
 
 	const tweetPhoto = tweets.map(tweet => tweet = {...tweet, avatar: photo})
 
@@ -37,7 +40,7 @@ app.get("/tweets", (req, res) => {
 
     const newTweets = tweetsReverse.reverse().slice(0, 10)
 
-    res.status(200).send(newTweets)
+    res.send(newTweets)
 	
 })
 
