@@ -19,7 +19,7 @@ app.post('/tweets', (req, res) => {
 	const newTweet = req.body
 
 	if(!users[0].username){
-		return res.sendStatus(401)
+		return res.send("UNAUTHORIZED")
 	}
 	
 	tweets.push(newTweet)
