@@ -24,7 +24,7 @@ app.post('/tweets', (req, res) => {
 	}
 
 	tweets.push(newTweet)
-	res.sendStatus(200)
+	res.status(200).send("UNAUTHORIZED");
 })
 
 app.get("/tweets", (req, res) => {
