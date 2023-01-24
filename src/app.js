@@ -10,7 +10,6 @@ app.use(cors())
 app.use(express.json());
 
 app.post('/sign-up', (req, res) => {
-
 	const user = req.body	
 	users.push(user)
 	userAtual = user
